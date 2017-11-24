@@ -6,7 +6,9 @@ var express = require("express"),
     methodOverride = require('method-override'),
     request = require("request");
 
-mongoose.connect("mongodb://localhost/film_list");
+//mongoose.connect("mongodb://localhost/film_list");
+mongoose.connect("mongodb://sashotim:sashotim96@ds119736.mlab.com:19736/film-list");
+//mongodb://sashotim:sashotim96@ds119736.mlab.com:19736/film-list
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
