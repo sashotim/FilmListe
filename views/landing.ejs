@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Film List</title>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
+    </head>
+    <body>
+
+<style>
+    body {
+        background: #ffc3e1;
+    }
+    
+    #input {
+        color: white;
+        font-weight: 700;
+    }
+    
+    #input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: white;
+      font-weight: 700;
+    }
+    
+    
+    
+</style>
+
+<div class="ui main text container">
+    <h1 class="ui header" style="margin-top: 40px" >
+        Здравей, Беце! Какво ще гледаме днес?!
+    </h1>
+    
+    <h3 class="ui header"> Ето го и нашия великолепен списък <i class="heart icon"></i></h3>
+    
+    <form action="/" method="POST" class="ui form">
+        
+        <div class="ui left icon input purple focus">
+          <input type="text" name="film[name]" placeholder="Име на филм" style="background:rgba(150, 39, 186, 0.45)" id="input">
+          <i class="film icon" style="color: white; font-weight: 800; text-size: 1.2em"></i>
+        </div>
+        <button type="submit" class="ui purple button">Фърляй го в списъка!</button>
+    </form>
+    
+    
+    <ul>
+        <% movies.forEach(function(movie){ %>
+            <!--<div class="ui card">-->
+            <!--  <div class="image">-->
+            <!--    <img src="<%= //movie.image %>">-->
+            <!--  </div>-->
+            <!--  <div class="content">-->
+            <!--    <a class="header"><%= //movie.name %></a>-->
+            <!--    <div class="meta">-->
+            <!--      <span class="date"><%= //movie.year %></span>-->
+            <!--    </div>-->
+            <!--    <div class="description">-->
+            <!--      <%= //movie.description %>-->
+            <!--    </div>-->
+            <!--  </div>-->
+            <div class="ui items">
+              <div class="item" style="<% if(movie.seen){ %> background: #ffc04c <% } %>;border-radius: 25px " >
+                <div class="image">
+                  <img src="<%= movie.image %>" style="border-radius: 25px">
+                </div>
+                <div class="content">
+                  <a class="header"><%= movie.name %></a>
+                  <div class="meta">
+                    <span>Сюжетчето</span>
+                  </div>
+                  <div class="description">
+                    <p><%= movie.description %></p>
+                  </div>
+                  <div class="extra">
+                    <%= movie.year %>
+                    <form method="POST" action="/<%=movie._id%>?_method=DELETE">
+                        <button class="ui orange button" type="submit">Да са бега!</button>
+                    </form>
+                    <form method="POST" action="/<%=movie._id%>?_method=PUT">
+                        <button class="ui yellow button" type="submit">Гледахме го!</button>
+                    </form> 
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% }); %>
+    </ul>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.13/semantic.min.js"></script>
+
+        
+    </body>
+</html>
