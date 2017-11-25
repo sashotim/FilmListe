@@ -5,6 +5,7 @@ var movieSchema = new mongoose.Schema({
    image: String,
    description: String,
    year: String,
+   iMDBlink: String,
    seen: Boolean
 });
 

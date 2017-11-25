@@ -38,6 +38,7 @@ app.post("/", function(req, res) {
                     image: data["Poster"],
                     description: data["Plot"],
                     year: data["Year"],
+                    iMDBlink: data["imdbID"],
                     seen: false
                 }, function(err, movie) {
                     if (err) {
