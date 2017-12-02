@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
         else {
             res.render("landing", { movies: movies });
         }
-    });
+    }).sort({ "_id": -1 });
 });
 
 
@@ -79,6 +79,10 @@ app.put("/:id", function(req, res) {
             res.redirect("/");
         }
     });
+});
+
+Movie.findOneAndUpdate({ "image": "N/A" }, { "image": "http://www.jakartaplayers.org/uploads/1/2/5/5/12551960/2297419_orig.jpg" }, function(err, movie) {
+    console.log(movie);
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {

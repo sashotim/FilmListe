@@ -31,9 +31,6 @@
                     });
                 }
             });
-            $('#submit').on('click', function() {
-                $('body, html').animate({ scrollTop: $("#new_element").offset().top }, 1000);
-            });
         });
     </script>
 </head>
@@ -89,35 +86,32 @@
                 <!--    </div>-->
                 <!--  </div>-->
                 <div class="ui items">
-                    <div class="item" style="<% if(movie.seen){ %> background: #ffc04c <% } %>;border-radius: 25px " <% if(i==arr.length-2){ %>
-                        id="new_element"
-                        <% } %>
-                            >
-                            <div class="image">
-                                <img src="<%= movie.image %>" style="border-radius: 25px">
+                    <div class="item" style="<% if(movie.seen){ %> background: #ffc04c <% } %>;border-radius: 25px ">
+                        <div class="image">
+                            <img src="<%= movie.image %>" style="border-radius: 25px">
+                        </div>
+                        <div class="content">
+                            <a class="header" target="_blank" href="http://www.imdb.com/title/<%= movie.iMDBlink %>">
+                                <%= movie.name %>
+                            </a>
+                            <div class="meta">
+                                <span>Сюжетчето</span>
                             </div>
-                            <div class="content">
-                                <a class="header" target="_blank" href="http://www.imdb.com/title/<%= movie.iMDBlink %>">
-                                    <%= movie.name %>
-                                </a>
-                                <div class="meta">
-                                    <span>Сюжетчето</span>
-                                </div>
-                                <div class="description">
-                                    <p>
-                                        <%= movie.description %>
-                                    </p>
-                                </div>
-                                <div class="extra">
-                                    <%= movie.year %>
-                                        <form method="POST" action="/<%=movie._id%>?_method=DELETE">
-                                            <button class="ui orange button" type="submit">Да са бега!</button>
-                                        </form>
-                                        <form method="POST" action="/<%=movie._id%>?_method=PUT">
-                                            <button class="ui yellow button" type="submit">Гледахме го!</button>
-                                        </form>
-                                </div>
+                            <div class="description">
+                                <p>
+                                    <%= movie.description %>
+                                </p>
                             </div>
+                            <div class="extra">
+                                <%= movie.year %>
+                                    <form method="POST" action="/<%=movie._id%>?_method=DELETE">
+                                        <button class="ui orange button" type="submit">Да са бега!</button>
+                                    </form>
+                                    <form method="POST" action="/<%=movie._id%>?_method=PUT">
+                                        <button class="ui yellow button" type="submit">Гледахме го!</button>
+                                    </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <% }); %>
