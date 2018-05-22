@@ -4,7 +4,9 @@ var express = require("express"),
     Movie = require("./models/movies"),
     bodyParser = require("body-parser"),
     methodOverride = require('method-override'),
-    request = require("request");
+    request = require("request"),
+    authRoutes = require("./routes/auth-routes"),
+    passportSetup = require("./config/passport-setup");
 
 //mongoose.connect("mongodb://localhost/film_list");
 mongoose.connect("mongodb://sashotim:sashotim96@ds119736.mlab.com:19736/film-list");
@@ -12,6 +14,10 @@ mongoose.connect("mongodb://sashotim:sashotim96@ds119736.mlab.com:19736/film-lis
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+
+//set up routes
+
+app.use('/auth', authRoutes);
 
 app.get("/", function(req, res) {
     Movie.find({}, function(err, movies) {
