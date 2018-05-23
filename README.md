@@ -1,10 +1,10 @@
 # FilmListe
-Das ist einen Project die ich schon deploied habe. Es ist eine Liste von Filme und Informationen dazu.
-Diese Informationen werden aus ein API genommen und mit der Datenbank verwaltet und gespeichert.
+Das ist ein Projekt die ich schon deployed habe. Es ist eine Liste von Filmen und Informationen dazu.
+Diese Informationen werden aus einem API genommen und mit der Datenbank verwaltet und gespeichert.
 
 Die Technologien die ich benutzt habe sind:
  - Node mit Express (für Requestverwaltung)
  - MongoDB (für die Datenbank)
  - OMDB API (als Informationsquelle)
- - AJAX (für asznchrone Requestverwaltung)
+ - AJAX (für asynchrone Requestverwaltung)
  - Semantic UI (als Alternative von Bootstrap)
